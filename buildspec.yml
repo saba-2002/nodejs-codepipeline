@@ -1,3 +1,29 @@
+# version: 0.2
+
+# phases:
+#   install:
+#     commands:
+#       - echo Installing source NPM dependencies...
+#       - npm install
+#       - echo Installing Mocha...
+#       - npm install -g mocha
+#   pre_build:
+#     commands:
+#       - echo Running linter
+#       - npm run lint
+#   build:
+#     commands:
+#       - echo Build started on `date`
+#       - echo Compiling the Node.js code
+#       - echo Running unit tests
+#       - npm test
+#   post_build:
+#     commands:
+#       - echo Build completed on `date`
+# artifacts:
+#   files:
+#     - '**/*'
+
 version: 0.2
 
 phases:
@@ -17,9 +43,14 @@ phases:
       - echo Compiling the Node.js code
       - echo Running unit tests
       - npm test
+      - echo Building Docker image...
+      - docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$ECR_IMAGE_TAG .
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Pushing Docker image to ECR...
+      - docker push $ECR_REGISTRY/$ECR_REPOSITORY:$ECR_IMAGE_TAG
+
 artifacts:
   files:
     - '**/*'
