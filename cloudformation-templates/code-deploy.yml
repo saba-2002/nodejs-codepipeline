@@ -90,7 +90,7 @@ Resources:
             cd /var
             mkdir nodeapp
             cd /home/ec2-user
-            wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
+            wget https://aws-codedeploy-ap-south-1.s3.amazonaws.com/latest/install
             chmod +x ./install
             ./install auto
 
@@ -99,7 +99,7 @@ Resources:
     Properties:
       LaunchConfigurationName: !Ref EC2LaunchConfiguration
       AvailabilityZones:
-        Fn::GetAZs: "us-east-1"
+        Fn::GetAZs: "ap-aouth-1"
       MinSize: "2"
       MaxSize: "2"
       LoadBalancerNames:
@@ -137,7 +137,7 @@ Resources:
             Effect: Allow
             Principal:
               Service:
-                - codedeploy.us-east-1.amazonaws.com
+                - codedeploy.ap-south-1.amazonaws.com
             Action: sts:AssumeRole
       Path: "/"
 
