@@ -7,11 +7,11 @@ if [ "$(docker ps -q -f name=node-app)" ]; then
 fi
 
 # Pull the latest image from ECR
-$(aws ecr get-login --no-include-email --region eu-north-1)
-docker pull 339712999129.dkr.ecr.eu-north-1.amazonaws.com/node-app:latest
+$(aws ecr get-login --no-include-email --region ap-south-1)
+docker pull 471112992707.dkr.ecr.ap-south-1.amazonaws.com/node-app:latest
 
 # Run the new container
-docker run -d -p 3000:3000 --name node-app 339712999129.dkr.ecr.eu-north-1.amazonaws.com/node-app:latest
+docker run -d -p 3000:3000 --name node-app 471112992707.dkr.ecr.ap-south-1.amazonaws.com/node-app:latest
 
 
 
