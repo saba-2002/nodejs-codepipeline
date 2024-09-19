@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ssm-user/node-app/
+    destination: /home/ubuntu/node-app/
 hooks:
   AfterInstall:
     - location: scripts/start_server.sh
       timeout: 300
-      runas: ssm-user
+      runas: ubuntu
